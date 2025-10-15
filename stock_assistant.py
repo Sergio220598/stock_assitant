@@ -32,7 +32,10 @@ memoria = ConversationSummaryMemory(
 # ===============================
 prompt = ChatPromptTemplate.from_template("""
 Eres un experto en inversiones en bolsa de valores.
-Adapta tus respuestas al nivel de conocimiento financiero del usuario: {nivel_conocimiento}.
+Adapta tus respuestas en base a lo siguiente:
+- Nivel de conocimiento financiero del usuario: {nivel_conocimiento}, 
+- Monto de Capital inicial en dolares: {capital}
+- Monto de inversion mensual en dolares: {inversion_mensual}
 Explica de forma clara, educativa y con ejemplos reales cuando sea posible.
 Responde siempre en un máximo de 5 oraciones, priorizando claridad y brevedad.
 
@@ -83,13 +86,16 @@ agente = RunnableWithMessageHistory(
 # 6️⃣ Loop interactivo
 # ===============================
 if __name__ == "__main__":
-    print("🧠 Asistente bursátil con memoria actualizado (LangChain 2025). Escribe 'salir' para terminar.\n")
+    print("🧠 Bienvenido al Asistente de inversiones. Escribe 'salir' para terminar.\n")
 
     # 🔹 Paso adicional: pedir nivel de conocimiento
     nivel_conocimiento = input("📊 Indica tu nivel de conocimiento financiero (principiante / intermedio / avanzado): ").strip().lower()
-    session_id = f"usuario_{nivel_conocimiento}"
+    capital = input("📊 Indica tu monto de capital inicial a invertir en dolares: ").strip().lower()
+    inversion_mensual = input("📊 Indica tu monto de inversion_mensual en dolares: ").strip().lower()
+    session_id = f"id_001"
+  
 
-    print(f"Perfecto. Ajustaré las explicaciones a tu nivel: {nivel_conocimiento}.\n")
+    print(f"Perfecto. Ajustaré las explicaciones en base a lo siguiente: \n - Nivel de conocimiento: {nivel_conocimiento}\n - Capital inicial de ${capital} \n - Inversion mensual de ${inversion_mensual}.\n")
 
     while True:
         pregunta = input("💬 Tu pregunta: ")
@@ -99,7 +105,7 @@ if __name__ == "__main__":
 
         # Invocar el agente con el nivel incluido
         respuesta = agente.invoke(
-            {"input": pregunta, "nivel_conocimiento": nivel_conocimiento},
+            {"input": pregunta, "nivel_conocimiento": nivel_conocimiento,"capital":capital,"inversion_mensual":inversion_mensual},
             config={"configurable": {"session_id": session_id}}
         )
 
@@ -116,3 +122,4 @@ if __name__ == "__main__":
 #------------------2.validador de parametros de entrada
 #------------------1.agrega un parametro mas de entrada (ejm:capital, aporte mensual)
 #------------------2.carga documentos
+#esto tengo que hacer 
