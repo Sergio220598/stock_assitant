@@ -6,6 +6,7 @@ from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain.memory import ConversationSummaryMemory
 from dotenv import load_dotenv
 import os
+from agent_rag import agent_rag
 
 # ===============================
 # 1️⃣ Cargar API Key
@@ -31,7 +32,7 @@ memoria = ConversationSummaryMemory(
 # 4️⃣ Crear prompt y parser
 # ===============================
 prompt = ChatPromptTemplate.from_template("""
-Eres un experto en inversiones en bolsa de valores.
+Eres un experto en inversiones.
 Adapta tus respuestas en base a lo siguiente:
 - Nivel de conocimiento financiero del usuario: {nivel_conocimiento}, 
 - Monto de Capital inicial en dolares: {capital}
@@ -96,12 +97,19 @@ if __name__ == "__main__":
   
 
     print(f"Perfecto. Ajustaré las explicaciones en base a lo siguiente: \n - Nivel de conocimiento: {nivel_conocimiento}\n - Capital inicial de ${capital} \n - Inversion mensual de ${inversion_mensual}.\n")
+    
+
 
     while True:
         pregunta = input("💬 Tu pregunta: ")
         if pregunta.lower().strip() == "salir":
             print("👋 ¡Hasta luego! Recuerda diversificar tus inversiones.")
             break
+
+        contexto_docs = agent_rag(pregunta)
+        pregunta = f"{pregunta}\n\nContexto de documentos relevantes:\n{contexto_docs}"
+        print("-----------pregunta:----------------")
+        print(contexto_docs)
 
         # Invocar el agente con el nivel incluido
         respuesta = agente.invoke(

@@ -1,0 +1,119 @@
+Impuestos sobre inversiones en Perú
+
+Pagar impuestos sobre tus inversiones es algo muy importante de hacer, sin embargo, la legislación es compleja y por ende, no es muy comprendida por muchos. Esto puede llevar a que, por desidia o falta de comprensión, lleve algunos a omitir el pago de estos impuestos lo cual puede generar problemas frente a la SUNAT y afectar el retorno real de las inversiones.
+
+Hay muchos inversionistas que tienen una muy mala noción de cómo funcionan los impuestos y toman decisiones según eso, creyendo que están en lo correcto cuando no tienen idea del riesgo en que se están metiendo. Así por ejemplo, asumen que la ganancia de una inversión se encontraría exonerada de impuestos, cuando en realidad está sujeta a un impuesto del 30%.
+
+En este artículo, Fernando Nuñez nos comparte gran información de valor, dándonos el detalle el impuesto a la renta aplicable sobre las ganancias, intereses o dividendos derivados de distintas inversiones, como se hace el cálculo y donde se deben hacer los pagos. Si inviertes en la bolsa de valores, bienes raíces, bonos, empresas o cualquier tipo de inversión, ésta guía puede servir de gran ayuda. Espero que les guste.
+
+¿De qué depende el pago del Impuesto a la Renta?
+En el Perú, la aplicación del Impuesto a la Renta o impuesto a las ganancias sobre los rendimientos realizados originados por valores mobiliarios (acciones, bonos, índices, entre otros) depende fundamentalmente de tres aspectos: el domicilio del inversionista, el tipo de inversionista; y, tipo y fuente de renta que se haya percibido.
+
+Así, dichos parámetros pueden subdividirse en las siguientes categorías:
+
+
+
+Para efectos del análisis del impuesto a las ganancias que desarrollo a continuación, consideré la imposición sobre las rentas de personas naturales domiciliadas y no domiciliadas por inversiones locales y extranjeras.
+
+En ese sentido, debe tenerse como premisa que:
+
+Califican como personas naturales domiciliadas los sujetos nacionales y extranjeros que permanezcan físicamente en el Perú 183 días calendario durante un periodo cualquiera de 12 meses, la ausencia de estas personas por periodos superiores genera que se consideren no domiciliadas. Por lo general, los cambios de domicilio son efectivos desde el inicio de cada ejercicio gravable.
+Las personas naturales domiciliadas están afectas al impuesto por sus ganancias locales y extranjeras, mientras que las personas naturales no domiciliadas únicamente por sus rentas de fuente local.
+ 
+
+Ganancias de capital
+
+
+¿Qué son las ganancias de capital?
+Califican como ganancias de capital los rendimientos derivados de la enajenación, de valores mobiliarios. En otras palabras, las ganancias que se obtengan al momento de transferir valores mobiliarios. Un ejemplo de esto vendría a ser las ganancias obtenidas al comprar y vender acciones en la bolsa de valores. Ojo que estamos hablando de ganancias realizadas y no simplemente del incremento en el valor de una acción o bono (ganancia no realizada).
+
+En ese orden, se consideran de fuente peruana las ganancias generadas por la enajenación de valores emitidos por empresas peruanas o American Depositary Receipts y Global Depositary Receipts que tengan como subyacentes acciones emitidas por empresas peruanas.
+
+Por otro lado, califican como de fuente extranjera, las ganancias que provienen de valores mobiliarios emitidos por empresas extranjeras.
+
+¿Cómo se determinan las ganancias de capital?
+La ganancia de capital gravable con el impuesto, sea de fuente peruana o extranjera, se determina por la diferencia entre el valor de mercado y el computable. En ese sentido, deben tenerse en cuenta los siguientes conceptos:
+
+Valor de mercado: En caso el valor mobiliario se cotice en bolsas de valores su valor de mercado será en principio el valor de cotización. En caso de valores no listados, el valor de mercado será el valor pactado, el cual no podrá ser inferior al valor patrimonial.
+Costo computable: Corresponde a su valor de adquisición. Por ejemplo, el valor de suscripción, cuando el valor se adquiera en su emisión – por primera vez – o el precio de compra cuando el valor se adquiera de terceros.
+Adicionalmente, se tienen otras reglas de determinación para valores mobiliarios adquiridos de manera gratuita (p.e por causa de muerte o actos intervivos).
+
+
+
+¿Cuánto y cómo se paga el impuesto por ganancias de capital?
+Personas naturales domiciliadas
+ 
+
+Ganancia de capital de fuente peruana: Sujeta a la tasa efectiva de 5%.
+En caso las ganancias de capital sean liquidadas por CAVALI, esta entidad retiene y paga la retención a cuenta del impuesto definitivo que se determinará al cierre del ejercicio. Esta tasa será aplicable cuando se vendan acciones que coticen en la BVL a través de una Sociedad Agente de Bolsa de manera automática, en otras palabras, acá lo hacen por ti. De lo contrario, el impuesto debe ser declarado y pagado directamente por el inversionista en el mes siguiente a su percepción mediante el Formulario Virtual 1665 – Rentas de Segunda Categoría.
+
+Ganancia de capital de fuente extranjera: Sujeta a tasas progresivo-acumulativas que van del 8% hasta el 30%.
+Estas tasas serán aplicables cuando se vendan acciones de empresas extranjeras. El impuesto se paga con la presentación de la Declaración Jurada Anual del Impuesto a la Renta previa consolidación de los importes con las rentas de trabajo obtenidas en el mismo año.
+
+Para aplicar el porcentaje no aplica únicamente a tus ganancias de fuente extranjera, debe aplicarse a eso más la suma de otros ingresos del año. Como ejemplo, el efecto numérico de combinar las rentas de fuente extranjera y de trabajo y la aplicación de tasas es el siguiente:
+
+Paso 1: Determinación de la renta (en soles):
+
+
+
+*La renta global vendría a ser la suma de rentas de trabajo totales más la renta neta de fuente extranjera.
+
+Paso 2: Aplicación de las tasas del Impuesto a la Renta (la UIT 2023 es s/ 4,950), se aplica sobre la renta global de s/ 248,347: 
+
+
+
+*Como pueden ver en el cuadro, el porcentaje se aplica por partes, si sumas todos los montos, terminan siendo la renta global de s/248,347.
+
+ 
+
+Personas naturales no domiciliadas
+Ganancia de capital de fuente peruana: Si la enajenación es realizada “dentro del país”  (esto es cuando estén inscritos en el Registro Público del Mercado de Valores y sean negociados en la BVL) la tasa efectiva aplicable es de 5%; en caso contrario, la ganancia estará gravada con la tasa de 30%. Cuando las operaciones se realicen a través de la BVL, sean liquidados por CAVALI o cuando el comprador sea un sujeto domiciliado, el impuesto es retenido y pagado por CAVALI o el pagador de la renta.
+Ganancias de capital de fuente extranjera: No sujetas a imposición.
+ 
+
+Intereses
+
+
+¿Qué son los intereses?
+Son intereses los rendimientos por la tenencia de títulos de deuda. Por ejemplo, los cupones que se pagan por la tenencia de bonos o letras del tesoro. Así, se consideran de fuente peruana cuando derivan de obligaciones emitidas por entidades peruanas y de fuente extranjera cuando se originan en títulos de deuda emitidos por entidades extranjeras, salvo que dicha entidad realice una emisión de deuda con el objetivo de financiar operaciones en Perú, en cuyo caso los intereses asociados a dicha emisión también se consideran de fuente peruana.
+
+¿Cuánto y cómo se paga el impuesto por intereses? 
+ 
+
+Personas naturales domiciliadas
+Intereses de fuente peruana: Sujetos a la tasa efectiva de 5%. Si los intereses son liquidados por CAVALI, es dicha entidad la encargada de la retención y pago del impuesto. De lo contrario, el impuesto debe ser retenido y pagado por el emisor de los valores mobiliarios.  En caso el impuesto no sea retenido por CAVALI o el emisor, debe ser declarado y pagado directamente en el mes siguiente de su percepción mediante el Formulario Virtual 1665 – Rentas de Segunda Categoría.
+Intereses de fuente extranjera: Sujetos a tasa progresivo-acumulativa que va del 8% hasta el 30%. El impuesto se paga con la presentación de la Declaración Jurada Anual del Impuesto a la Renta previa consolidación de los importes con las rentas de trabajo obtenidas en el mismo año.
+ 
+
+Personas naturales no domiciliadas
+Intereses de fuente peruana: Sujetos a la tasa de 4.99%. La tasa de 4.99% podrá elevarse a 30% cuando se verifiquen algunos supuestos, como por ejemplo, que exista vinculación entre el tenor del bono y la empresa emisora. Si los intereses son liquidados por CAVALI, es dicha entidad la encargada de la retención y pago del impuesto. De lo contrario, el impuesto debe ser retenido y pagado por el emisor de los valores mobiliarios. En caso el impuesto no sea retenido por CAVALI o el emisor, debe ser declarado y pagado directamente en el mes siguiente de su percepción mediante el Formulario Virtual 1665 – Rentas de Segunda Categoría.
+Intereses de fuente extranjera: No sujetas a imposición.
+Dividendos
+
+
+¿Qué son los dividendos?
+Califican como dividendos los rendimientos por la tenencia de títulos de capital. Así, se consideran de fuente peruana cuando son distribuidos por empresas constituidas en Perú. Esta calificación es aplicable a dividendos pagados a tenedores de acciones y a tenedores de ADR y GDR – que tengan como subyacente a acciones emitidas por empresas domiciliadas en el país. 
+
+¿Cuánto y cómo se paga el impuesto por dividendos? Personas naturales domiciliadas
+Dividendos de fuente peruana: Sujetos a la tasa efectiva de 5%. Si los dividendos son liquidados por CAVALI, es dicha entidad la encargada de la retención y pago del impuesto. De lo contrario, el impuesto debe ser retenido y pagado por la empresa pagadora.
+Dividendos de fuente extranjera: Sujetos a tasa progresivo-acumulativa que van del 8% hasta el 30%. El impuesto se paga con la presentación de la Declaración Jurada Anual del Impuesto a la Renta previa consolidación de los importes con las rentas de trabajo obtenidas en el mismo año. Personas naturales no domiciliadas
+Dividendos de fuente peruana: Sujetos a la tasa efectiva de 5%.
+Dividendos de fuente extranjera: No sujetos a imposición.
+Beneficios tributarios
+Exoneraciones y tasas reducidas Exoneraciones: Tasa 0% 
+
+Ganancias de capital que deriven de ventas efectuadas en la BVL cuando los valores mobiliarios que las originen clasifiquen como líquidos (tengan presencia bursátil) hasta el 2023. Esta exoneración no está vigente desde el 1 de enero del 2024, desde esa fecha se aplican las otras tasas del impuesto, según corresponda.
+Ganancias de capital, intereses o dividendos que provengan de valores emitidos en la Comunidad Andina de Naciones – CAN (Colombia, Ecuador o Bolivia). La exoneración aplica cuando la renta fue gravada con el IR previamente en Colombia, Ecuador y/o Bolivia.
+Ganancias de capital e intereses que deriven de letras del Tesoro Público o títulos de deuda emitidos por la República del Perú.
+Intereses por depósitos y ahorros pagados por bancos locales, como un depósito a plazo fijo o cuentas de ahorro de lato interés.
+Tasas reducidas
+Ganancias de capital obtenidas a través de transacciones en el Mercado Integrado Latinoamericano (Bolsas de Valores de Perú, Chile, Colombia o México): Tasa aplicable de 6.25% vs. la tasa para rentas de fuente extranjera desde 8% a 30%.
+Las rentas de Fondos de Inversión en Renta de Bienes Inmuebles (FIRBI) y de Fideicomisos de Titulización para Inversión en Renta de Bienes Raíces (FIBRA) se sujetan a la tasa del 5% sobre base bruta vs. las rentas de otros fondos empresariales sujetas a la tasa de 29.5%, entre otros beneficios. 
+
+
+ 
+
+Conclusiones y recomendaciones
+El tratamiento expuesto es una guía referencial, puesto que existen una serie de inversiones en los mercados financieros que requieren ser analizadas en detalle. Así, por ejemplo, se tienen las inversiones sobre valores mobiliarios de empresas peruanas emitidos en emisiones internacionales, bajo Rule 144-A o Regulation S, acciones emitidas por empresas holding de grupos peruanos domiciliadas en el exterior, entre otros. 
+
+En ese sentido, para todos los casos se recomienda la evaluación de un experto tributarista en función a las características específicas de los valores mobiliarios y de los sujetos involucrados. Esto fue el resumen cómo pagar el impuesto a las ganancias de inversiones en Perú. Es clave conocer los aspectos tributarios de las inversiones para evitar contingencias frente a la SUNAT y maximizar los retornos después de impuestos. Esperamos que este artículo te haya ayudado.
