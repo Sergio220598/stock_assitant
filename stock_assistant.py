@@ -7,6 +7,12 @@ from langchain.memory import ConversationSummaryMemory
 from dotenv import load_dotenv
 import os
 from agent_rag import agent_rag
+from tools import get_stock_price
+
+from langchain.agents import initialize_agent, Tool, AgentType
+from langchain_openai import ChatOpenAI
+import yfinance as yf
+import requests
 
 # ===============================
 # 1️⃣ Cargar API Key
@@ -83,6 +89,22 @@ agente = RunnableWithMessageHistory(
     input_messages_key="input",
 )
 
+#---------Tools-----------------------------
+tools = [
+    Tool(
+        name="ObtenerPrecioAccion",
+        func=get_stock_price,
+        description="Obtiene el precio actual de una acción en USD. Usa como parametro de entrada el nombre de la empresa."
+    )
+]
+
+agente_tools = initialize_agent(
+    tools=tools,
+    llm=modelo,
+    agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+    verbose=False
+)
+
 # ===============================
 # 6️⃣ Loop interactivo
 # ===============================
@@ -126,8 +148,5 @@ if __name__ == "__main__":
         print("\n📈 Asistente:", respuesta, "\n")
 
 # siguientes pasos
-#------------------1.usar git y github
-#------------------2.validador de parametros de entrada
-#------------------1.agrega un parametro mas de entrada (ejm:capital, aporte mensual)
-#------------------2.carga documentos
-#esto tengo que hacer 
+#------------------
+
