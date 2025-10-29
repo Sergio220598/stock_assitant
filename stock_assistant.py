@@ -15,18 +15,18 @@ import yfinance as yf
 import requests
 
 # ===============================
-# 1️⃣ Cargar API Key
+# 1 Cargar API Key
 # ===============================
 load_dotenv()
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 # ===============================
-# 2️⃣ Crear modelo
+# 2 Crear modelo
 # ===============================
 modelo = ChatOpenAI(model="gpt-5-nano", temperature=0.3)
 
 # ===============================
-# 3️⃣ Crear memoria de resumen
+# 3 Crear memoria de resumen
 # ===============================
 memoria = ConversationSummaryMemory(
     llm=modelo,
@@ -35,7 +35,7 @@ memoria = ConversationSummaryMemory(
 )
 
 # ===============================
-# 4️⃣ Crear prompt y parser
+# 4 Crear prompt y parser
 # ===============================
 prompt = ChatPromptTemplate.from_template("""
 Eres un experto en inversiones.
@@ -58,16 +58,6 @@ cadena = prompt | modelo | parser
 # 5️⃣ Historial por sesión
 # ===============================
 
-#-----------------------ChatMessageHistory------------------------
-#Ejemplo de como se almacena la historia en el diccionario store por cada sesion gracias a la funcion obtener_historial con ChatMessageHistory
-# store={'perfil_1': ChatMessageHistory(
-#     messages=[
-#         HumanMessage(content='Quiero invertir en la bolsa de valores.'),
-#         AIMessage(content='Perfecto. ¿Tienes un perfil de riesgo conservador o agresivo?'),
-#         HumanMessage(content='Soy conservador.'),
-#         AIMessage(content='Entonces te convendrían bonos o fondos indexados de bajo riesgo.')
-#     ]
-# )}
 store = {}  # para guardar historiales por sesión
 
 def obtener_historial(session_id: str) -> ChatMessageHistory:
@@ -77,12 +67,6 @@ def obtener_historial(session_id: str) -> ChatMessageHistory:
     return store[session_id]
 
 
-
-#--------RunnableWithMessageHistory--------
-# 1. Obtiene historial desde store     
-# 2. Inyecta contexto pasado  
-# 3. Ejecuta pipeline prompt→modelo→parser
-# 4. Devuelve respuesta   
 agente = RunnableWithMessageHistory(
     runnable=cadena,
     get_session_history=lambda session_id: obtener_historial(session_id),
@@ -106,7 +90,7 @@ agente_tools = initialize_agent(
 )
 
 # ===============================
-# 6️⃣ Loop interactivo
+# 6 Loop interactivo
 # ===============================
 if __name__ == "__main__":
     print("🧠 Bienvenido al Asistente de inversiones. Escribe 'salir' para terminar.\n")
@@ -117,10 +101,7 @@ if __name__ == "__main__":
     inversion_mensual = input("📊 Indica tu monto de inversion_mensual en dolares: ").strip().lower()
     session_id = f"id_001"
   
-
     print(f"Perfecto. Ajustaré las explicaciones en base a lo siguiente: \n - Nivel de conocimiento: {nivel_conocimiento}\n - Capital inicial de ${capital} \n - Inversion mensual de ${inversion_mensual}.\n")
-    
-
 
     while True:
         pregunta = input("💬 Tu pregunta: ")
@@ -130,8 +111,7 @@ if __name__ == "__main__":
 
         contexto_docs = agent_rag(pregunta)
         pregunta = f"{pregunta}\n\nContexto de documentos relevantes:\n{contexto_docs}"
-        print("-----------pregunta:----------------")
-        print(contexto_docs)
+
 
         # Invocar el agente con el nivel incluido
         respuesta = agente.invoke(
@@ -147,6 +127,4 @@ if __name__ == "__main__":
 
         print("\n📈 Asistente:", respuesta, "\n")
 
-# siguientes pasos
-#------------------
 
