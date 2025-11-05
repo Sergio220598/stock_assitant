@@ -23,7 +23,7 @@ os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 # ===============================
 # 2 Crear modelo
 # ===============================
-modelo = ChatOpenAI(model="gpt-5-nano", temperature=0.3)
+modelo = ChatOpenAI(model="gpt-5", temperature=0.3)
 
 # ===============================
 # 3 Crear memoria de resumen
@@ -44,7 +44,7 @@ Adapta tus respuestas en base a lo siguiente:
 - Monto de Capital inicial en dolares: {capital}
 - Monto de inversion mensual en dolares: {inversion_mensual}
 Explica de forma clara, educativa y con ejemplos reales cuando sea posible.
-Responde siempre en un máximo de 5 oraciones, priorizando claridad y brevedad.
+
 
 Usuario: {input}
 """)
@@ -104,6 +104,7 @@ if __name__ == "__main__":
     print(f"Perfecto. Ajustaré las explicaciones en base a lo siguiente: \n - Nivel de conocimiento: {nivel_conocimiento}\n - Capital inicial de ${capital} \n - Inversion mensual de ${inversion_mensual}.\n")
 
     while True:
+        print('''Escribe 'salir' para terminar''')
         pregunta = input("💬 Tu pregunta: ")
         if pregunta.lower().strip() == "salir":
             print("👋 ¡Hasta luego! Recuerda diversificar tus inversiones.")
