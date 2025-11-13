@@ -6,14 +6,14 @@ from langchain_community.vectorstores import FAISS
 from functools import partial
 import os
 
-def agent_rag(query: str, k: int = 3) -> str: #Recupera los 3 fragmentos más relevantes.
+def agent_rag(query: str, k: int = 3) -> str:
     """
-    Recupera información relevante desde la carpeta 'documents'
+    Recupera información relevante desde la carpeta 'PDFs'
     y responde a la pregunta usando RAG simple.
     """
-    carpeta = "documents"
+    carpeta = "PDFs"
     if not os.path.exists(carpeta):
-        return "No se encontró la carpeta 'documents'."
+        return "No se encontró la carpeta 'PDFs'."
 
     # 1 Cargar documentos (PDF y TXT)
     docs = []
@@ -23,7 +23,7 @@ def agent_rag(query: str, k: int = 3) -> str: #Recupera los 3 fragmentos más re
         docs += DirectoryLoader(carpeta, glob="**/*.pdf", loader_cls=PyPDFLoader).load()
 
     except Exception as e:
-        return f"No se pudieron cargar los documentos: {e}"
+        return f"No se pudieron cargar los PDFs: {e}"
 
     if not docs:
         return "No se encontraron documentos válidos en la carpeta."
@@ -33,7 +33,7 @@ def agent_rag(query: str, k: int = 3) -> str: #Recupera los 3 fragmentos más re
     chunks = splitter.split_documents(docs)
 
     # 3 Crear embeddings y FAISS temporal
-    embeddings = OpenAIEmbeddings(model="text‑embedding‑3‑large")
+    embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
     vectorstore = FAISS.from_documents(chunks, embeddings)
     retriever = vectorstore.as_retriever(search_kwargs={"k": k})
 
@@ -45,7 +45,7 @@ def agent_rag(query: str, k: int = 3) -> str: #Recupera los 3 fragmentos más re
     llm = ChatOpenAI(model="gpt-5", temperature=0.3)
 
     prompt = f"""
-    Traduce el siguiente contexto a ingles responde de forma clara y breve en español.:
+    Usa el siguiente contexto para responder de forma clara
 
     Contexto:
     {contexto}
@@ -57,4 +57,4 @@ def agent_rag(query: str, k: int = 3) -> str: #Recupera los 3 fragmentos más re
     return respuesta.content
 
 
-#print(agent_rag("explicame que es el syp500"))
+print(agent_rag("explicame que es el Flip"))

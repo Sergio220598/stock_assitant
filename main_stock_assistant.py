@@ -126,6 +126,11 @@ if __name__ == "__main__":
         except Exception as e:
             print(f"[warning] no se pudo actualizar la memoria: {e}")
 
+        print("==================================================================")
         print("\n📈 Asistente:", respuesta, "\n")
+
+#agregar respuesta en tiempo real
+#conexion a internet
+#langraph
 
 
