@@ -8,11 +8,7 @@ from dotenv import load_dotenv
 import os
 from agent_rag import agent_rag
 from tools import get_stock_price
-
 from langchain.agents import initialize_agent, Tool, AgentType
-from langchain_openai import ChatOpenAI
-import yfinance as yf
-import requests
 
 # ===============================
 # 1 Cargar API Key
@@ -21,9 +17,13 @@ load_dotenv()
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 # ===============================
-# 2 Crear modelo
+# 2 Crear modelo 
 # ===============================
-modelo = ChatOpenAI(model="gpt-5", temperature=0.3)
+modelo = ChatOpenAI(
+    model="gpt-5",
+    temperature=0.3,
+    streaming=True  
+)
 
 # ===============================
 # 3 Crear memoria de resumen
@@ -38,34 +38,35 @@ memoria = ConversationSummaryMemory(
 # 4 Crear prompt y parser
 # ===============================
 prompt = ChatPromptTemplate.from_template("""
-Eres un experto en inversiones.
+Eres un experto en inversiones con amplia experiencia.
 Adapta tus respuestas en base a lo siguiente:
-- Nivel de conocimiento financiero del usuario: {nivel_conocimiento}, 
-- Monto de Capital inicial en dolares: {capital}
-- Monto de inversion mensual en dolares: {inversion_mensual}
-Explica de forma clara, educativa y con ejemplos reales cuando sea posible.
+- Nivel de conocimiento financiero del usuario: {nivel_conocimiento}
+- Monto de capital inicial: {capital} USD
+- Inversión mensual: {inversion_mensual} USD
 
+Reglas:
+- Explica siempre de forma clara y breve.
+- Da ejemplos reales cuando sea posible.
+- Si el usuario es principiante, simplifica. Si es avanzado, profundiza.
+- Usa el contexto entregado por RAG en tu respuesta.
 
 Usuario: {input}
 """)
 
 parser = StrOutputParser()
 
-#----pipeline de cadena--------
+# ---- pipeline de cadena --------
 cadena = prompt | modelo | parser
 
 # ===============================
-# 5️⃣ Historial por sesión
+# 5 Historial por sesión
 # ===============================
-
-store = {}  # para guardar historiales por sesión
+store = {}
 
 def obtener_historial(session_id: str) -> ChatMessageHistory:
-    """Retorna o crea el historial para cada sesión"""
     if session_id not in store:
         store[session_id] = ChatMessageHistory()
     return store[session_id]
-
 
 agente = RunnableWithMessageHistory(
     runnable=cadena,
@@ -73,12 +74,14 @@ agente = RunnableWithMessageHistory(
     input_messages_key="input",
 )
 
-#---------Tools-----------------------------
+# ===============================
+# 6 Tools del agente
+# ===============================
 tools = [
     Tool(
         name="ObtenerPrecioAccion",
         func=get_stock_price,
-        description="Obtiene el precio actual de una acción en USD. Usa como parametro de entrada el nombre de la empresa."
+        description="Obtiene el precio actual de una acción en USD. Recibe: nombre de la empresa."
     )
 ]
 
@@ -90,47 +93,68 @@ agente_tools = initialize_agent(
 )
 
 # ===============================
-# 6 Loop interactivo
+# 7 Loop de interacción con STREAMING
 # ===============================
 if __name__ == "__main__":
     print("🧠 Bienvenido al Asistente de inversiones. Escribe 'salir' para terminar.\n")
 
-    # 🔹 Paso adicional: pedir nivel de conocimiento
-    nivel_conocimiento = input("📊 Indica tu nivel de conocimiento financiero (principiante / intermedio / avanzado): ").strip().lower()
-    capital = input("📊 Indica tu monto de capital inicial a invertir en dolares: ").strip().lower()
-    inversion_mensual = input("📊 Indica tu monto de inversion_mensual en dolares: ").strip().lower()
-    session_id = f"id_001"
-  
-    print(f"Perfecto. Ajustaré las explicaciones en base a lo siguiente: \n - Nivel de conocimiento: {nivel_conocimiento}\n - Capital inicial de ${capital} \n - Inversion mensual de ${inversion_mensual}.\n")
+    nivel_conocimiento = input("📊 ¿Tu nivel de conocimiento financiero? (principiante / intermedio / avanzado): ").strip().lower()
+    capital = input("💰 ¿Capital inicial en USD?: ").strip().lower()
+    inversion_mensual = input("📈 ¿Inversión mensual en USD?: ").strip().lower()
+
+    print(f"""
+Perfecto. Ajustaré mis explicaciones según:
+✓ Nivel de conocimiento: {nivel_conocimiento}
+✓ Capital inicial: ${capital}
+✓ Inversión mensual: ${inversion_mensual}
+
+Comencemos. 
+""")
+
+
+    session_id = "id_001"
 
     while True:
-        print('''Escribe 'salir' para terminar''')
+        print("==============================================")
         pregunta = input("💬 Tu pregunta: ")
+
         if pregunta.lower().strip() == "salir":
-            print("👋 ¡Hasta luego! Recuerda diversificar tus inversiones.")
+            print("👋 ¡Hasta luego! Recuerda siempre diversificar tus inversiones.")
             break
 
+        # ---- RAG ----
         contexto_docs = agent_rag(pregunta)
-        pregunta = f"{pregunta}\n\nContexto de documentos relevantes:\n{contexto_docs}"
+        pregunta_completa = f"{pregunta}\n\nContexto relevante:\n{contexto_docs}"
 
+        print("\n📈 Asistente:\n")
 
-        # Invocar el agente con el nivel incluido
-        respuesta = agente.invoke(
-            {"input": pregunta, "nivel_conocimiento": nivel_conocimiento,"capital":capital,"inversion_mensual":inversion_mensual},
+        # STREAMING
+        respuesta_completa = ""
+
+        for chunk in agente.stream(
+            {
+                "input": pregunta_completa,
+                "nivel_conocimiento": nivel_conocimiento,
+                "capital": capital,
+                "inversion_mensual": inversion_mensual
+            },
             config={"configurable": {"session_id": session_id}}
-        )
+        ):
+            print(chunk, end="", flush=True)
+            respuesta_completa += chunk
 
-        # Actualizar resumen de memoria (mantiene contexto condensado)
+        print("\n\n")
+
+        # Guardar en memoria
         try:
-            memoria.save_context({"input": pregunta}, {"output": str(respuesta)})
+            memoria.save_context({"input": pregunta}, {"output": respuesta_completa})
         except Exception as e:
-            print(f"[warning] no se pudo actualizar la memoria: {e}")
+            print(f"[warning] No se pudo actualizar la memoria: {e}")
 
-        print("==================================================================")
-        print("\n📈 Asistente:", respuesta, "\n")
 
-#agregar respuesta en tiempo real
+#mejorar prompts
 #conexion a internet
-#langraph
+#eliminar carpeta documentos de github
+#langGraph y LangSmith
 
 
