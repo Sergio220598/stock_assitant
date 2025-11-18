@@ -93,7 +93,7 @@ agente_tools = initialize_agent(
 )
 
 # ===============================
-# 7 Loop de interacción con STREAMING
+# 7 Loop de interacción
 # ===============================
 if __name__ == "__main__":
     print("🧠 Bienvenido al Asistente de inversiones. Escribe 'salir' para terminar.\n")
@@ -151,10 +151,5 @@ Comencemos.
         except Exception as e:
             print(f"[warning] No se pudo actualizar la memoria: {e}")
 
-
-#mejorar prompts
-#conexion a internet
-#eliminar carpeta documentos de github
-#langGraph y LangSmith
 
 
